@@ -81,11 +81,12 @@ resource "aws_subnet" "VPC-01-PrivateSN"{
 
 resource "aws_route_table" "VPC-01-PrivateRT"{
     vpc_id=aws_vpc.VPC-01.id
-    
+
     route{
     cidr_block="0.0.0.0/0"
     gateway_id= aws_nat_gateway.VPC-01-NAT-GW.id
     }
+    
 tags = {
     Name = "VPC-01-PrivateRT"
   }

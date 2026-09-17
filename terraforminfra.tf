@@ -25,6 +25,7 @@ resource "aws_vpc" "VPC-01"{
 #Internet Gateway
 resource "aws_internet_gateway" "VPC-01-IGW"{
     vpc_id = aws_vpc.VPC-01.id
+    
     tags={
         Name="VPC-01-IGW"
     }
@@ -74,7 +75,7 @@ resource "aws_nat_gateway" "VPC-01-NAT-GW"{
 resource "aws_subnet" "VPC-01-PrivateSN"{
     vpc_id = aws_vpc.VPC-01.id
     cidr_block = "10.0.2.0/24"
-    
+
     tags={
         Name="VPC-01-PrivateSN"
     }

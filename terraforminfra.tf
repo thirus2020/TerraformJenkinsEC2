@@ -86,7 +86,7 @@ resource "aws_route_table" "VPC-01-PrivateRT"{
     cidr_block="0.0.0.0/0"
     gateway_id= aws_nat_gateway.VPC-01-NAT-GW.id
     }
-    
+
 tags = {
     Name = "VPC-01-PrivateRT"
   }
@@ -127,7 +127,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4"{
 resource "aws_instance" "Linux_WebServer"{
     ami="ami-081720d39920a9281"
     instance_type="t3.micro"
-    key_name="Terraform_Server_Key"
+    key_name="Jenkins_Server_Key"
     subnet_id=aws_subnet.VPC-01-PublicSN.id
     vpc_security_group_ids = [aws_security_group.VPC-01-NSG.id]
     associate_public_ip_address = true
@@ -142,7 +142,7 @@ resource "aws_instance" "Linux_WebServer"{
 resource "aws_instance" "Linux_DBServer"{
     ami="ami-081720d39920a9281"
     instance_type="t3.micro"
-    key_name="Terraform_Server_Key"
+    key_name="Jenkins_Server_Key"
     subnet_id=aws_subnet.VPC-01-PrivateSN.id
     vpc_security_group_ids = [aws_security_group.VPC-01-NSG.id]
     
